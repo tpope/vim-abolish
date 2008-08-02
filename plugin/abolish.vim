@@ -443,15 +443,17 @@ function! s:normalize_options(flags)
         let opts = {}
         let flags = a:flags
     endif
+    let g:op1 = copy(opts)
     if flags =~# 'w'
         let opts.boundaries = 2
     elseif flags =~# 'v'
         let opts.boundaries = 1
-    else
+    elseif !has_key(opts,'boundaries')
         let opts.boundaries = 0
     endif
-    let opts.case = (flags !~# 'I')
+    let opts.case = (flags !~# 'I' ? get(opts,'case',1) : 0)
     let opts.flags = substitute(flags,'\C[avIiw]','','g')
+    let g:op2 = copy(opts)
     return opts
 endfunction
 
@@ -491,8 +493,8 @@ function! s:egrep_pattern(dict,boundaries)
         let a = '\<'
         let b = '\>'
     elseif a:boundaries
-        let a = '(\<|_)'
-        let b = '(\>|_|[[:upper:]][[:lower:]])'
+        let a = '(\<\|_)'
+        let b = '(\>\|_\|[[:upper:]][[:lower:]])'
     else
         let a = ''
         let b = ''
@@ -540,13 +542,12 @@ let s:commands.search.options = {"word": 0, "variable": 0, "flags": ""}
 
 function! s:commands.search.process(bang,line1,line2,count,args)
     call s:extractopts(a:args,self.options)
-    let opts = s:normalize_options(self.options)
     if self.options.word
         let self.options.flags .= "w"
     elseif self.options.variable
         let self.options.flags .= "v"
     endif
-    let opts = s:normalize_options(flags)
+    let opts = s:normalize_options(self.options)
     if len(a:args) > 1
         return s:grep_command(join(a:args[1:]," "),a:bang,opts,a:args[0])
     elseif len(a:args) == 1
@@ -590,7 +591,6 @@ function! s:parse_substitute(bang,line1,line2,count,args)
     else
         let cmd = a:line1.",".a:line2."substitute"
     endif
-    let g:cmd = s:substitute_command(cmd,bad,good,flags)
     return s:substitute_command(cmd,bad,good,flags)
 endfunction
 
@@ -599,13 +599,12 @@ let s:commands.substitute.options = {"word": 0, "variable": 0, "flags": "g"}
 
 function! s:commands.substitute.process(bang,line1,line2,count,args)
     call s:extractopts(a:args,self.options)
-    let opts = s:normalize_options(self.options)
     if self.options.word
         let self.options.flags .= "w"
     elseif self.options.variable
         let self.options.flags .= "v"
     endif
-    let opts = s:normalize_options(flags)
+    let opts = s:normalize_options(self.options)
     if len(a:args) <= 1
         call s:throw("E471: Argument required")
     else
