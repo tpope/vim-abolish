@@ -147,7 +147,7 @@ endfunction
 
 call extend(Abolish, {
             \ 'camelcase':  s:function('s:camelcase'),
-            \ 'mixedcase': s:function('s:mixedcase'),
+            \ 'mixedcase':  s:function('s:mixedcase'),
             \ 'snakecase':  s:function('s:snakecase'),
             \ 'uppercase':  s:function('s:uppercase'),
             \ 'dashcase':   s:function('s:dashcase')
