@@ -1,6 +1,6 @@
 " abolish.vim - Language friendly searches, substitutions, and abbreviations
 " Maintainer:   Tim Pope
-" Last Change:  2008 Sep 10
+" Version:      1.0
 
 " Install this file as plugin/abolish.vim.  See doc/abolish.txt for details.
 " To access it from Vim, see :help add-local-help (hint: :helptags ~/.vim/doc)
