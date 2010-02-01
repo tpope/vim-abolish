@@ -142,7 +142,7 @@ function! s:uppercase(word)
 endfunction
 
 function! s:dashcase(word)
-    return substitute(s:snakecase(a:word),'_','-','')
+    return substitute(s:snakecase(a:word),'_','-','g')
 endfunction
 
 call extend(Abolish, {
