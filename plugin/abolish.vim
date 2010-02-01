@@ -1,5 +1,5 @@
 " abolish.vim - Language friendly searches, substitutions, and abbreviations
-" Maintainer:   Tim Pope
+" Maintainer:   Tim Pope <vimNOSPAM@tpope.org>
 " Version:      1.0
 
 " Install this file as plugin/abolish.vim.  See doc/abolish.txt for details.
