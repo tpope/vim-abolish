@@ -563,30 +563,36 @@ call extend(Abolish.Coercions, {
       \}, "keep")
 
 function! s:coerce(transformation)
-  let regbody = getreg('"')
-  let regtype = getregtype('"')
-  let c = v:count1
-  while c > 0
-    let c -= 1
-    norm! yiw
-    let word = @@
-    let @@ = s:send(g:Abolish.Coercions,a:transformation,word)
-    if !exists('begin')
-      let begin = getpos("'[")
+  let clipboard = &clipboard
+  try
+    set clipboard=
+    let regbody = getreg('"')
+    let regtype = getregtype('"')
+    let c = v:count1
+    while c > 0
+      let c -= 1
+      norm! yiw
+      let word = @@
+      let @@ = s:send(g:Abolish.Coercions,a:transformation,word)
+      if !exists('begin')
+        let begin = getpos("'[")
+      endif
+      if word !=# @@
+        let changed = 1
+        norm! viwpw
+      else
+        norm! w
+      endif
+    endwhile
+    call setreg('"',regbody,regtype)
+    call setpos("'[",begin)
+    call setpos(".",begin)
+    if exists("changed")
+      silent! call repeat#set("\<Plug>Coerce".a:transformation)
     endif
-    if word !=# @@
-      let changed = 1
-      norm! viwpw
-    else
-      norm! w
-    endif
-  endwhile
-  call setreg('"',regbody,regtype)
-  call setpos("'[",begin)
-  call setpos(".",begin)
-  if exists("changed")
-    silent! call repeat#set("\<Plug>Coerce".a:transformation)
-  endif
+  finally
+    let &clipboard = clipboard
+  endtry
 endfunction
 
 nnoremap <silent> <Plug>Coerce :<C-U>call <SID>coerce(nr2char(getchar()))<CR>
