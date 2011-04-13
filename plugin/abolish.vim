@@ -8,12 +8,8 @@
 
 " Initialization {{{1
 
-" Exit quickly when:
-" - this plugin was already loaded (or disabled)
-" - when 'compatible' is set
-" - Vim is older than 7.0
-if (exists("g:loaded_abolish") && g:loaded_abolish) || &cp || v:version < 700
-    finish
+if exists("g:loaded_abolish") || &cp || v:version < 700
+  finish
 endif
 let g:loaded_abolish = 1
 
