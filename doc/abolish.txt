@@ -1,6 +1,6 @@
 *abolish.txt*  Language friendly searches, substitutions, and abbreviations
 
-Author:  Tim Pope <vimNOSPAM@tpope.org>         *abolish-author*
+Author:  Tim Pope <http://tpo.pe/>
 License: Same terms as Vim itself (see |license|)
 
 This plugin is only available if 'compatible' is not set.
