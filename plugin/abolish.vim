@@ -3,19 +3,12 @@
 " Version:      1.0
 " GetLatestVimScripts: 1545 1 :AutoInstall: abolish.vim
 
-" Install this file as plugin/abolish.vim.  See doc/abolish.txt for details.
-" To access it from Vim, see :help add-local-help (hint: :helptags ~/.vim/doc)
-" Afterwards, you should be able to do :help abolish
-
 " Initialization {{{1
 
 if exists("g:loaded_abolish") || &cp || v:version < 700
   finish
 endif
 let g:loaded_abolish = 1
-
-let s:cpo_save = &cpo
-set cpo&vim
 
 if !exists("g:abolish_save_file")
   if strpart(expand("<sfile>"),0,strlen(expand("~"))) == expand("~")
@@ -192,7 +185,6 @@ function! s:expand_braces(dict)
     return s:expand_braces(new_dict)
   else
     return new_dict
-    " old_dict
   endif
 endfunction
 
@@ -610,7 +602,5 @@ if exists(':S') != 2
   command -nargs=1 -bang -bar -range=0 -complete=custom,s:SubComplete S
         \ :exec s:subvert_dispatcher(<bang>0,<line1>,<line2>,<count>,<q-args>)
 endif
-
-let &cpo = s:cpo_save
 
 " vim:set ft=vim sw=2 sts=2:
