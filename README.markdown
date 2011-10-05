@@ -113,7 +113,7 @@ See the contribution guidelines for
 Self-Promotion
 --------------
 
-Like rake.vim? Follow the repository on
+Like abolish.vim? Follow the repository on
 [GitHub](https://github.com/tpope/vim-abolish) and vote for it on
 [vim.org](http://www.vim.org/scripts/script.php?script_id=1545).  And if
 you're feeling especially charitable, follow [tpope](http://tpo.pe/) on
