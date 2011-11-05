@@ -78,6 +78,40 @@ repeat it with `&` too!
 
     :%Subvert/facilit{y,ies}/building{,s}/g
 
+From a conceptual level, one way to think about how this substitution
+works is to imagine that in the braces you are declaring the
+requirements for turning that word from singular to plural.  In
+the facility example, the same base letters in both the singular
+and plural form of the word are `facilit` To turn facility to a
+plural word you must change the `y` to `ies` so you specify
+`{y,ies}` in the braces.
+
+To convert the word building from singular to plural, again
+look at the common letters between the singular and plural forms:
+`building`  In this case you do not need to remove any letter
+from building to turn it into plural form and you need to
+add a `s` so the braces should be `{,s}`.
+
+A few more examples:
+
+Address to Reference
+
+    :Subvert/address{,es}/reference{,s}/g
+
+Blog to Post (you can just do this with a regular :s also)
+
+    :Subvert/blog{,s}/post{,s}/g
+
+Child to Adult
+
+    :Subvert/child{,ren}/adult{,s}/g
+
+Be amazed as it correctly turns the word children into the word adults!
+
+Die to Spinner
+
+    :Subvert/di{e,ce}/spinner{,s}/g
+
 You can abbreviate it as `:S`, and it accepts the full range of flags
 including things like `c` (confirm).
 
