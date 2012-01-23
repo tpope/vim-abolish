@@ -111,10 +111,11 @@ function! s:mixedcase(word)
 endfunction
 
 function! s:camelcase(word)
-  if a:word !~# '_' && a:word =~# '\l'
-    return substitute(a:word,'^.','\l&','')
+  let word = substitute(a:word, '-', '_', 'g')
+  if word !~# '_' && word =~# '\l'
+    return substitute(word,'^.','\l&','')
   else
-    return substitute(a:word,'\C\(_\)\=\(.\)','\=submatch(1)==""?tolower(submatch(2)) : toupper(submatch(2))','g')
+    return substitute(word,'\C\(_\)\=\(.\)','\=submatch(1)==""?tolower(submatch(2)) : toupper(submatch(2))','g')
   endif
 endfunction
 
