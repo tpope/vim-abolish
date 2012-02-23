@@ -11,9 +11,7 @@ endif
 let g:loaded_abolish = 1
 
 if !exists("g:abolish_save_file")
-  if strpart(expand("<sfile>"),0,strlen(expand("~"))) == expand("~")
-    let g:abolish_save_file = expand("<sfile>:h:h")."/after/plugin/abolish.vim"
-  elseif isdirectory(expand("~/.vim"))
+  if isdirectory(expand("~/.vim"))
     let g:abolish_save_file = expand("~/.vim/after/plugin/abolish.vim")
   elseif isdirectory(expand("~/vimfiles")) || has("win32")
     let g:abolish_save_file = expand("~/vimfiles/after/plugin/abolish.vim")
@@ -495,6 +493,7 @@ endfunction
 let s:commands.abbrev     = s:commands.abstract.clone()
 let s:commands.abbrev.options = {"buffer":0,"cmdline":0,"delete":0}
 function! s:commands.abbrev.process(bang,line1,line2,count,args)
+  let args = copy(a:args)
   call s:extractopts(a:args,self.options)
   if self.options.delete
     let cmd = "unabbrev"
@@ -522,9 +521,12 @@ function! s:commands.abbrev.process(bang,line1,line2,count,args)
   call s:abbreviate_from_dict(cmd,dict)
   if a:bang
     let i = 0
-    let str = "Abolish ".join(a:000," ")
+    let str = "Abolish ".join(args," ")
     let file = g:abolish_save_file
-    call s:mkdir(fnamemodify(file,':h'),"p")
+    if !isdirectory(fnamemodify(file,':h'))
+      call mkdir(fnamemodify(file,':h'),'p')
+    endif
+
     if filereadable(file)
       let old = readfile(file)
     else
