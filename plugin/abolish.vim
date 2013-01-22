@@ -554,6 +554,7 @@ call extend(Abolish.Coercions, {
       \ 's': Abolish.snakecase,
       \ '_': Abolish.snakecase,
       \ 'u': Abolish.uppercase,
+      \ 'U': Abolish.uppercase,
       \ '-': Abolish.dashcase,
       \ "function missing": s:function("s:unknown_coercion")
       \}, "keep")
