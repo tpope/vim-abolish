@@ -121,10 +121,10 @@ Coercion
 --------
 
 Want to turn `fooBar` into:  
-snake\_case press `crs` (CoeRce Snakecase)  
-camelCase   press `crc` (CoeRce Camelcase)  
-MixedCase   press `crm` (CoeRce Mixedcase)  
-UPPER\_CASE press`cru` (CoeRce Uppercase)  
+foo\_bar press `crs` (CoeRce Snakecase | snake\_case)  
+fooBar   press `crc` (CoeRce Camelcase | camelCase)  
+FooBar   press `crm` (CoeRce Mixedcase | MixedCase)  
+FOOBAR press`cru` (CoeRce Uppercase | UPPERCASE)  
 All just 3 keystrokes away and they are [repeat.vim](https://github.com/tpope/vim-repeat)able.
 
 Installation
