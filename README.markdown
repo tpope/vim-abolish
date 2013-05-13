@@ -118,8 +118,10 @@ There's also a variant for searching and a variant for grepping.
 
 Want to turn `fooBar` into `foo_bar`?  Press `crs` (coerce to
 snake\_case).  MixedCase (`crm`), camelCase (`crc`), snake\_case
-(`crs`), and UPPER\_CASE (`cru`) are all just 3 keystrokes away.  These
-commands support [repeat.vim](https://github.com/tpope/vim-repeat).
+(`crs`), UPPER\_CASE (`cru`), dash-case (`cr-`), dot.case (`cr.`),
+space case (`cr<space>`), and Title Case (`crt`) are all just 3
+keystrokes away.  These commands support
+[repeat.vim](https://github.com/tpope/vim-repeat).
 
 ## Installation
 
