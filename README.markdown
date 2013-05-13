@@ -124,7 +124,7 @@ Want to turn `fooBar` into:
 foo\_bar press `crs` (CoeRce Snakecase | snake\_case)  
 fooBar   press `crc` (CoeRce Camelcase | camelCase)  
 FooBar   press `crm` (CoeRce Mixedcase | MixedCase)  
-FOOBAR press`cru` (CoeRce Uppercase | UPPERCASE)  
+FOO_BAR press`cru` (CoeRce Uppercase snakecase | UPPER\_CASE)  
 All just 3 keystrokes away and they are [repeat.vim](https://github.com/tpope/vim-repeat)able.
 
 Installation
