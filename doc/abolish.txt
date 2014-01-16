@@ -156,6 +156,7 @@ characters:
   u: SNAKE_UPPERCASE
   U: SNAKE_UPPERCASE
   -: dash-case (not reversible)
+  .: dot-case (not reversible)
 
 For example, cru on a lowercase word is a slightly easier to type equivalent
 to gUiw.
