@@ -155,9 +155,24 @@ characters:
   s: snake_case
   u: SNAKE_UPPERCASE
   U: SNAKE_UPPERCASE
-  -: dash-case (not reversible)
+  -: dash-case (not usually reversible; see |abolish-coercion-reversible|)
+  .: dot-case (not usually reversible; see |abolish-coercion-reversible|)
 
 For example, cru on a lowercase word is a slightly easier to type equivalent
 to gUiw.
+
+COERCION REVERSIBILITY				*abolish-coercion-reversible*
+
+Some separators, such as "-" and ".", are listed as "not usually reversible".
+The reason is that these are not "keyword characters", so vim (and
+abolish.vim) will treat them as breaking a word.
+
+For example: "key_word" is a single keyword.  The dash-case version,
+"key-word", is treated as two keywords, "key" and "word".
+
+This behaviour is governed by the 'iskeyword' option.  If a separator appears
+in 'iskeyword', the corresponding coercion will be reversible.  For instance,
+dash-case is reversible in 'lisp' files, and dot-case is reversible in R
+files.
 
  vim:tw=78:ts=8:ft=help:norl:
