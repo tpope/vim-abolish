@@ -9,9 +9,9 @@ variants of a word.
 Abbreviation
 ------------
 
-I know how to spell separate.  I know how to spell desperate.  My
+I know how to spell "separate".  I know how to spell "desperate".  My
 fingers, however, have trouble distinguishing between the two, and I
-invariably have a 50 percent chance of typing seperate or desparate each
+invariably have a 50 percent chance of typing "seperate" or "desparate" each
 time one of these comes up.  At first, I tried abbreviations:
 
     :iabbrev  seperate  separate
@@ -42,8 +42,8 @@ Oh, but consider the noun form, and the adverb form!
     :iabbrev  SEPERATELY  SEPARATELY
     :iabbrev DESPARATELY DESPERATELY
 
-Wait, there's also separates, separated, separating, separations,
-separator...
+Wait, there's also "separates", "separated", "separating", "separations",
+"separator"...
 
 Abolish.vim provides a simpler way.  The following one command produces
 48 abbreviations including all of the above.
@@ -56,8 +56,8 @@ corrections my fingers refuse to learn.
 Substitution
 ------------
 
-One time I had an application that with a domain model called
-"facilities" that needed to be renamed to "buildings". So, a simple
+One time I had an application with a domain model called
+"facility" that needed to be renamed to "building". So, a simple
 search and replace, right?
 
     :%s/facility/building/g
@@ -82,15 +82,15 @@ From a conceptual level, one way to think about how this substitution
 works is to imagine that in the braces you are declaring the
 requirements for turning that word from singular to plural.  In
 the facility example, the same base letters in both the singular
-and plural form of the word are `facilit` To turn facility to a
+and plural form of the word are `facilit` To turn "facility" to a
 plural word you must change the `y` to `ies` so you specify
 `{y,ies}` in the braces.
 
-To convert the word building from singular to plural, again
+To convert the word "building" from singular to plural, again
 look at the common letters between the singular and plural forms:
-`building`  In this case you do not need to remove any letter
+`building`.  In this case you do not need to remove any letter
 from building to turn it into plural form and you need to
-add a `s` so the braces should be `{,s}`.
+add an `s` so the braces should be `{,s}`.
 
 A few more examples:
 
