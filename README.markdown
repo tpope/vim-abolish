@@ -133,11 +133,6 @@ then simply copy and paste:
 Once help tags have been generated, you can view the manual with
 `:help abolish`.
 
-## Contributing
-
-See the contribution guidelines for
-[pathogen.vim](https://github.com/tpope/vim-pathogen#readme).
-
 ## Self-Promotion
 
 Like abolish.vim? Follow the repository on
