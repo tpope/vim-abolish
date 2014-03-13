@@ -1,13 +1,11 @@
-abolish.vim
-===========
+# abolish.vim
 
 I sat on on this plugin for 3 years before releasing it, primarily
 because it's so gosh darn hard to explain.  It's three superficially
 unrelated plugins in one that share a common theme: working with
 variants of a word.
 
-Abbreviation
-------------
+## Abbreviation
 
 I know how to spell "separate".  I know how to spell "desperate".  My
 fingers, however, have trouble distinguishing between the two, and I
@@ -53,8 +51,7 @@ Abolish.vim provides a simpler way.  The following one command produces
 My current configuration has 25 Abolish commands that create hundreds of
 corrections my fingers refuse to learn.
 
-Substitution
-------------
+## Substitution
 
 One time I had an application with a domain model called
 "facility" that needed to be renamed to "building". So, a simple
@@ -117,16 +114,14 @@ including things like `c` (confirm).
 
 There's also a variant for searching and a variant for grepping.
 
-Coercion
---------
+## Coercion
 
 Want to turn `fooBar` into `foo_bar`?  Press `crs` (coerce to
 snake\_case).  MixedCase (`crm`), camelCase (`crc`), snake\_case
 (`crs`), and UPPER\_CASE (`cru`) are all just 3 keystrokes away.  These
 commands support [repeat.vim](https://github.com/tpope/vim-repeat).
 
-Installation
-------------
+## Installation
 
 If you don't have a preferred installation method, I recommend
 installing [pathogen.vim](https://github.com/tpope/vim-pathogen), and
@@ -138,14 +133,12 @@ then simply copy and paste:
 Once help tags have been generated, you can view the manual with
 `:help abolish`.
 
-Contributing
-------------
+## Contributing
 
 See the contribution guidelines for
 [pathogen.vim](https://github.com/tpope/vim-pathogen#readme).
 
-Self-Promotion
---------------
+## Self-Promotion
 
 Like abolish.vim? Follow the repository on
 [GitHub](https://github.com/tpope/vim-abolish) and vote for it on
@@ -154,8 +147,7 @@ you're feeling especially charitable, follow [tpope](http://tpo.pe/) on
 [Twitter](http://twitter.com/tpope) and
 [GitHub](https://github.com/tpope).
 
-License
--------
+## License
 
 Copyright (c) Tim Pope.  Distributed under the same terms as Vim itself.
 See `:help license`.
