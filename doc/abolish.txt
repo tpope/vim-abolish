@@ -157,7 +157,7 @@ characters:
   U: SNAKE_UPPERCASE
   -: dash-case (not usually reversible; see |abolish-coercion-reversible|)
   k: kebab-case (not usually reversible; see |abolish-coercion-reversible|)
-  .: dot-case (not usually reversible; see |abolish-coercion-reversible|)
+  .: dot.case (not usually reversible; see |abolish-coercion-reversible|)
 
 For example, cru on a lowercase word is a slightly easier to type equivalent
 to gUiw.
