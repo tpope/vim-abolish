@@ -1,6 +1,6 @@
 # abolish.vim
 
-I sat on on this plugin for 3 years before releasing it, primarily
+I sat on this plugin for 3 years before releasing it, primarily
 because it's so gosh darn hard to explain.  It's three superficially
 unrelated plugins in one that share a common theme: working with
 variants of a word.
