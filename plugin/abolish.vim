@@ -138,13 +138,21 @@ function! s:dotcase(word)
   return substitute(s:snakecase(a:word),'_','.','g')
 endfunction
 
+function! s:titlecase(word)
+  let word = (s:snakecase(a:word))
+  let word = substitute(word,'\C\(^\w\)','\=toupper(submatch(1))','')
+  let word = substitute(word,'_\(\w\)',' \u\1','g')
+  return word
+endfunction
+
 call extend(Abolish, {
       \ 'camelcase':  s:function('s:camelcase'),
       \ 'mixedcase':  s:function('s:mixedcase'),
       \ 'snakecase':  s:function('s:snakecase'),
       \ 'uppercase':  s:function('s:uppercase'),
       \ 'dashcase':   s:function('s:dashcase'),
-      \ 'dotcase':    s:function('s:dotcase')
+      \ 'dotcase':    s:function('s:dotcase'),
+      \ 'titlecase':  s:function('s:titlecase')
       \ }, 'keep')
 
 function! s:create_dictionary(lhs,rhs,opts)
@@ -563,6 +571,8 @@ call extend(Abolish.Coercions, {
       \ '-': Abolish.dashcase,
       \ 'k': Abolish.dashcase,
       \ '.': Abolish.dotcase,
+      \ 't': Abolish.titlecase,
+      \ 'T': Abolish.titlecase,
       \ "function missing": s:function("s:unknown_coercion")
       \}, "keep")
 
