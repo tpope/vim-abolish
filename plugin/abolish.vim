@@ -603,7 +603,9 @@ nnoremap <silent> <Plug>Coerce :<C-U>call <SID>coerce(nr2char(getchar()))<CR>
 
 " }}}1
 
-nmap cr  <Plug>Coerce
+if !exists("g:abolish_no_mappings") || ! g:abolish_no_mappings
+  nmap cr  <Plug>Coerce
+endif
 
 command! -nargs=+ -bang -bar -range=0 -complete=custom,s:Complete Abolish
       \ :exec s:dispatcher(<bang>0,<line1>,<line2>,<count>,[<f-args>])
