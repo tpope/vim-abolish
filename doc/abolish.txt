@@ -149,15 +149,16 @@ Abolish's case mutating algorithms can be applied to the word under the cursor
 using the cr mapping (mnemonic: CoeRce) followed by one of the following
 characters:
 
-  c: camelCase
-  m: MixedCase
-  _: snake_case
-  s: snake_case
-  u: SNAKE_UPPERCASE
-  U: SNAKE_UPPERCASE
-  -: dash-case (not usually reversible; see |abolish-coercion-reversible|)
-  k: kebab-case (not usually reversible; see |abolish-coercion-reversible|)
-  .: dot.case (not usually reversible; see |abolish-coercion-reversible|)
+  c:       camelCase
+  m:       MixedCase
+  _:       snake_case
+  s:       snake_case
+  u:       SNAKE_UPPERCASE
+  U:       SNAKE_UPPERCASE
+  -:       dash-case (not usually reversible; see |abolish-coercion-reversible|)
+  k:       kebab-case (not usually reversible; see |abolish-coercion-reversible|)
+  .:       dot.case (not usually reversible; see |abolish-coercion-reversible|)
+  <space>: space case (not usually reversible; see |abolish-coercion-reversible|)
 
 For example, cru on a lowercase word is a slightly easier to type equivalent
 to gUiw.
