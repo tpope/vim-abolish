@@ -327,7 +327,7 @@ endfunction
 " Searching {{{1
 
 function! s:subesc(pattern)
-  return substitute(a:pattern,'[][\\/.*~%()&]','\\&','g')
+  return substitute(a:pattern,'[][\\/.*+?~%()&]','\\&','g')
 endfunction
 
 function! s:sort(a,b)
