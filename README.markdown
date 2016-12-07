@@ -116,10 +116,12 @@ There's also a variant for searching and a variant for grepping.
 
 ## Coercion
 
-Want to turn `fooBar` into `foo_bar`?  Press `crs` (coerce to
-snake\_case).  MixedCase (`crm`), camelCase (`crc`), snake\_case
-(`crs`), and UPPER\_CASE (`cru`) are all just 3 keystrokes away.  These
-commands support [repeat.vim](https://github.com/tpope/vim-repeat).
+Want to turn `fooBar` into:  
+foo\_bar press `crs` (CoeRce Snakecase | snake\_case)  
+fooBar   press `crc` (CoeRce Camelcase | camelCase)  
+FooBar   press `crm` (CoeRce Mixedcase | MixedCase)  
+FOO_BAR press`cru` (CoeRce Uppercase snakecase | UPPER\_CASE)  
+All just 3 keystrokes away and they are [repeat.vim](https://github.com/tpope/vim-repeat)able.
 
 ## Installation
 
