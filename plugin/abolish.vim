@@ -142,6 +142,10 @@ function! s:dotcase(word)
   return substitute(s:snakecase(a:word),'_','.','g')
 endfunction
 
+function! s:titlecase(word)
+  return substitute(s:spacecase(a:word), '\(\<\w\)','\=toupper(submatch(1))','g')
+endfunction
+
 call extend(Abolish, {
       \ 'camelcase':  s:function('s:camelcase'),
       \ 'mixedcase':  s:function('s:mixedcase'),
@@ -149,7 +153,8 @@ call extend(Abolish, {
       \ 'uppercase':  s:function('s:uppercase'),
       \ 'dashcase':   s:function('s:dashcase'),
       \ 'dotcase':    s:function('s:dotcase'),
-      \ 'spacecase':  s:function('s:spacecase')
+      \ 'spacecase':  s:function('s:spacecase'),
+      \ 'titlecase':  s:function('s:titlecase')
       \ }, 'keep')
 
 function! s:create_dictionary(lhs,rhs,opts)
@@ -569,6 +574,7 @@ call extend(Abolish.Coercions, {
       \ 'k': Abolish.dashcase,
       \ '.': Abolish.dotcase,
       \ ' ': Abolish.spacecase,
+      \ 't': Abolish.titlecase,
       \ "function missing": s:function("s:unknown_coercion")
       \}, "keep")
 
