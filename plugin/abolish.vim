@@ -621,10 +621,10 @@ endif
 
 command! -nargs=+ -bang -bar -range=0 -complete=custom,s:Complete Abolish
       \ :exec s:dispatcher(<bang>0,<line1>,<line2>,<count>,[<f-args>])
-command! -nargs=1 -bang -bar -range=0 -complete=custom,s:SubComplete Subvert
+command! -nargs=1 -bang -bar -range -complete=custom,s:SubComplete Subvert
       \ :exec s:subvert_dispatcher(<bang>0,<line1>,<line2>,<count>,<q-args>)
 if exists(':S') != 2
-  command -nargs=1 -bang -bar -range=0 -complete=custom,s:SubComplete S
+  command -nargs=1 -bang -bar -range -complete=custom,s:SubComplete S
         \ :exec s:subvert_dispatcher(<bang>0,<line1>,<line2>,<count>,<q-args>)
 endif
 
