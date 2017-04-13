@@ -587,7 +587,7 @@ function! s:coerce(transformation)
     let c = v:count1
     while c > 0
       let c -= 1
-      norm! yiw
+      norm! yiW
       let word = @@
       let @@ = s:send(g:Abolish.Coercions,a:transformation,word)
       if !exists('begin')
@@ -595,9 +595,9 @@ function! s:coerce(transformation)
       endif
       if word !=# @@
         let changed = 1
-        norm! viwpw
+        norm! viWpW
       else
-        norm! w
+        norm! W
       endif
     endwhile
     call setreg('"',regbody,regtype)
