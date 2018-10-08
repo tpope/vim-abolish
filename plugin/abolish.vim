@@ -29,21 +29,21 @@ endfunction
 
 function! s:send(self,func,...)
   if type(a:func) == type('') || type(a:func) == type(0)
-    let Func = get(a:self,a:func,'')
+    let l:Func = get(a:self,a:func,'')
   else
-    let Func = a:func
+    let l:Func = a:func
   endif
   let s = type(a:self) == type({}) ? a:self : {}
-  if type(Func) == type(function('tr'))
-    return call(Func,a:000,s)
-  elseif type(Func) == type({}) && has_key(Func,'apply')
-    return call(Func.apply,a:000,Func)
-  elseif type(Func) == type({}) && has_key(Func,'call')
-    return call(Func.call,a:000,s)
-  elseif type(Func) == type('') && Func == '' && has_key(s,'function missing')
+  if type(l:Func) == type(function('tr'))
+    return call(l:Func,a:000,s)
+  elseif type(l:Func) == type({}) && has_key(l:Func,'apply')
+    return call(l:Func.apply,a:000,l:Func)
+  elseif type(l:Func) == type({}) && has_key(l:Func,'call')
+    return call(l:Func.call,a:000,s)
+  elseif type(l:Func) == type('') && l:Func == '' && has_key(s,'function missing')
     return call('s:send',[s,'function missing',a:func] + a:000)
   else
-    return Func
+    return l:Func
   endif
 endfunction
 
