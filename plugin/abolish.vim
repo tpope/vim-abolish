@@ -578,7 +578,11 @@ call extend(Abolish.Coercions, {
       \ "function missing": s:function("s:unknown_coercion")
       \}, "keep")
 
-function! s:coerce(transformation)
+function! s:get_transformation()
+  let s:transformation = nr2char(getchar())
+endfunction
+
+function! s:coerce(_)
   let clipboard = &clipboard
   try
     set clipboard=
@@ -589,12 +593,11 @@ function! s:coerce(transformation)
       let c -= 1
       norm! yiw
       let word = @@
-      let @@ = s:send(g:Abolish.Coercions,a:transformation,word)
+      let @@ = s:send(g:Abolish.Coercions,s:transformation,word)
       if !exists('begin')
         let begin = getpos("'[")
       endif
       if word !=# @@
-        let changed = 1
         norm! viwpw
       else
         norm! w
@@ -603,15 +606,12 @@ function! s:coerce(transformation)
     call setreg('"',regbody,regtype)
     call setpos("'[",begin)
     call setpos(".",begin)
-    if exists("changed")
-      silent! call repeat#set("\<Plug>Coerce".a:transformation)
-    endif
   finally
     let &clipboard = clipboard
   endtry
 endfunction
 
-nnoremap <silent> <Plug>Coerce :<C-U>call <SID>coerce(nr2char(getchar()))<CR>
+nnoremap <silent> <Plug>Coerce :<C-U>call <SID>get_transformation()<Bar>set opfunc=<SID>coerce<Bar>norm! g@l<CR>
 
 " }}}1
 
