@@ -29,9 +29,9 @@ endfunction
 
 function! s:send(self,func,...)
   if type(a:func) == type('') || type(a:func) == type(0)
-    let Func = get(a:self,a:func,'')
+    let l:Func = get(a:self,a:func,'')
   else
-    let Func = a:func
+    let l:Func = a:func
   endif
   let s = type(a:self) == type({}) ? a:self : {}
   if type(Func) == type(function('tr'))
