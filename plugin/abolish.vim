@@ -621,12 +621,11 @@ function! s:coerce(type) abort
 endfunction
 
 nnoremap <expr> <Plug>(abolish-coerce) <SID>coerce(nr2char(getchar())).'iw'
-nnoremap <expr> <Plug>Coerce <SID>coerce(nr2char(getchar())).'iw'
 
 " }}}1
 
 if !exists("g:abolish_no_mappings") || ! g:abolish_no_mappings
-  nmap cr  <Plug>(abolish-coerce)iw
+  nmap cr  <Plug>(abolish-coerce)
 endif
 
 command! -nargs=+ -bang -bar -range=0 -complete=custom,s:Complete Abolish
