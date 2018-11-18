@@ -527,7 +527,7 @@ function! s:commands.abbrev.process(bang,line1,line2,count,args)
     let cmd = cmd . " <buffer>"
   endif
   let [bad, good] = s:badgood(a:args)
-  if substitute(bad,'{.\{-\}.}','','g') !~ '^\k\+$'
+  if substitute(bad, '[{},]', '', 'g') !~# '^\k*$'
     call s:throw("E474: Invalid argument (not a keyword: ".string(bad).")")
   endif
   if !self.options.delete && good == ""
