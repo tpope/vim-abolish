@@ -150,7 +150,7 @@ using the cr mapping (mnemonic: CoeRce) followed by one of the following
 characters:
 
   c:       camelCase
-  m:       MixedCase
+  p:       PascalCase
   _:       snake_case
   s:       snake_case
   u:       SNAKE_UPPERCASE

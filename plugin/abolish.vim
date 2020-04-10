@@ -104,7 +104,7 @@ endfunction
 " }}}1
 " Dictionary creation {{{1
 
-function! s:mixedcase(word)
+function! s:pascalcase(word)
   return substitute(s:camelcase(a:word),'^.','\u&','')
 endfunction
 
@@ -148,7 +148,7 @@ endfunction
 
 call extend(Abolish, {
       \ 'camelcase':  s:function('s:camelcase'),
-      \ 'mixedcase':  s:function('s:mixedcase'),
+      \ 'pascalcase':  s:function('s:pascalcase'),
       \ 'snakecase':  s:function('s:snakecase'),
       \ 'uppercase':  s:function('s:uppercase'),
       \ 'dashcase':   s:function('s:dashcase'),
@@ -163,7 +163,7 @@ function! s:create_dictionary(lhs,rhs,opts)
   let expanded = s:expand_braces({a:lhs : a:rhs})
   for [lhs,rhs] in items(expanded)
     if get(a:opts,'case',1)
-      let dictionary[s:mixedcase(lhs)] = s:mixedcase(rhs)
+      let dictionary[s:pascalcase(lhs)] = s:pascalcase(rhs)
       let dictionary[tolower(lhs)] = tolower(rhs)
       let dictionary[toupper(lhs)] = toupper(rhs)
     endif
@@ -562,7 +562,7 @@ endfunction
 
 call extend(Abolish.Coercions, {
       \ 'c': Abolish.camelcase,
-      \ 'm': Abolish.mixedcase,
+      \ 'p': Abolish.pascalcase,
       \ 's': Abolish.snakecase,
       \ '_': Abolish.snakecase,
       \ 'u': Abolish.uppercase,
