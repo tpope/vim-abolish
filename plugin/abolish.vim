@@ -399,6 +399,8 @@ function! s:grep_command(args,bang,flags,word)
   let dict = s:create_dictionary(a:word,"",opts)
   if &grepprg == "internal"
     let lhs = "'".s:pattern(dict,opts.boundaries)."'"
+  elseif &grepprg =~ "^rg"
+    let lhs = "'".s:egrep_pattern(dict,opts.boundaries)."'"
   else
     let lhs = "-E '".s:egrep_pattern(dict,opts.boundaries)."'"
   endif
