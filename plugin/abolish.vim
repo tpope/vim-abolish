@@ -23,8 +23,8 @@ endif
 " }}}1
 " Utility functions {{{1
 
-function! s:function(name)
-  return function(substitute(a:name,'^s:',matchstr(expand('<sfile>'), '<SNR>\d\+_'),''))
+function! s:function(name) abort
+  return function(substitute(a:name,'^s:',matchstr(expand('<sfile>'), '.*\zs<SNR>\d\+_'),''))
 endfunction
 
 function! s:send(self,func,...)
