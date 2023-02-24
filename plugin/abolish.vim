@@ -565,6 +565,7 @@ endfunction
 call extend(Abolish.Coercions, {
       \ 'c': Abolish.camelcase,
       \ 'm': Abolish.mixedcase,
+      \ 'p': Abolish.mixedcase,
       \ 's': Abolish.snakecase,
       \ '_': Abolish.snakecase,
       \ 'u': Abolish.uppercase,
