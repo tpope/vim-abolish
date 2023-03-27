@@ -159,8 +159,6 @@ characters:
   k:       kebab-case (not usually reversible; see |abolish-coercion-reversible|)
   -:       dash-case (aka kebab-case)
   .:       dot.case (not usually reversible; see |abolish-coercion-reversible|)
-  <space>: space case (not usually reversible; see |abolish-coercion-reversible|)
-  t:       Title Case (not usually reversible; see |abolish-coercion-reversible|)
 
 For example, cru on a lowercase word is a slightly easier to type equivalent
 to gUiw.
