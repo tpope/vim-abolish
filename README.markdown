@@ -118,8 +118,8 @@ There's also a variant for searching and a variant for grepping.
 
 Want to turn `fooBar` into `foo_bar`?  Press `crs` (coerce to
 snake\_case).  MixedCase (`crm`), camelCase (`crc`), UPPER\_CASE
-(`cru`), dash-case (`cr-`), and dot.case (`cr.`) are all just 3
-keystrokes away.
+(`cru`), dash-case (`cr-`), dot.case (`cr.`) and path/case (`cr/`)
+are all just 3 keystrokes away.
 
 ## Installation
 

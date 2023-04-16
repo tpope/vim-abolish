@@ -121,7 +121,7 @@ function! s:snakecase(word)
   let word = substitute(a:word,'::','/','g')
   let word = substitute(word,'\(\u\+\)\(\u\l\)','\1_\2','g')
   let word = substitute(word,'\(\l\|\d\)\(\u\)','\1_\2','g')
-  let word = substitute(word,'[.-]','_','g')
+  let word = substitute(word,'[.-/]','_','g')
   let word = tolower(word)
   return word
 endfunction
@@ -142,6 +142,10 @@ function! s:dotcase(word)
   return substitute(s:snakecase(a:word),'_','.','g')
 endfunction
 
+function! s:pathcase(word)
+  return substitute(s:snakecase(a:word),'_','/','g')
+endfunction
+
 call extend(Abolish, {
       \ 'camelcase':  s:function('s:camelcase'),
       \ 'mixedcase':  s:function('s:mixedcase'),
@@ -149,6 +153,7 @@ call extend(Abolish, {
       \ 'uppercase':  s:function('s:uppercase'),
       \ 'dashcase':   s:function('s:dashcase'),
       \ 'dotcase':    s:function('s:dotcase'),
+      \ 'pathcase':   s:function('s:pathcase'),
       \ 'spacecase':  s:function('s:spacecase'),
       \ }, 'keep')
 
@@ -568,6 +573,7 @@ call extend(Abolish.Coercions, {
       \ '-': Abolish.dashcase,
       \ 'k': Abolish.dashcase,
       \ '.': Abolish.dotcase,
+      \ '/': Abolish.pathcase,
       \ ' ': Abolish.spacecase,
       \ "function missing": s:function("s:unknown_coercion")
       \}, "keep")

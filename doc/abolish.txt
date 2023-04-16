@@ -159,13 +159,15 @@ characters:
   k:       kebab-case (not usually reversible; see |abolish-coercion-reversible|)
   -:       dash-case (aka kebab-case)
   .:       dot.case (not usually reversible; see |abolish-coercion-reversible|)
+  /:       path/case (not usually reversible; see |abolish-coercion-reversible|)
 
 For example, cru on a lowercase word is a slightly easier to type equivalent
 to gUiw.
 
 COERCION REVERSIBILITY				*abolish-coercion-reversible*
 
-Some separators, such as "-" and ".", are listed as "not usually reversible".
+Some separators, such as "-", "." and "/", are listed as "not usually
+reversible".
 The reason is that these are not "keyword characters", so vim (and
 abolish.vim) will treat them as breaking a word.
 
