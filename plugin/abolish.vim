@@ -431,7 +431,11 @@ endfunction
 
 function! s:substitute_command(cmd,bad,good,flags)
   let opts = s:normalize_options(a:flags)
-  let dict = s:create_dictionary(a:bad,a:good,opts)
+  let bad_or_search = a:bad
+  if empty(bad_or_search)
+    let bad_or_search = @/
+  endif
+  let dict = s:create_dictionary(bad_or_search,a:good,opts)
   let lhs = s:pattern(dict,opts.boundaries)
   let g:abolish_last_dict = dict
   return a:cmd.'/'.lhs.'/\=Abolished()'."/".opts.flags
