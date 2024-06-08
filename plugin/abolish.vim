@@ -108,6 +108,12 @@ function! s:mixedcase(word)
   return substitute(s:camelcase(a:word),'^.','\u&','')
 endfunction
 
+function! s:adacase(word)
+  let word = substitute(s:snakecase(a:word),'_\([a-z]\)','_\U\1','g')
+  let word = substitute(word,'\<[a-z]','\U&','')
+  return word
+endfunction
+
 function! s:camelcase(word)
   let word = substitute(a:word, '-', '_', 'g')
   if word !~# '_' && word =~# '\l'
@@ -145,6 +151,7 @@ endfunction
 call extend(Abolish, {
       \ 'camelcase':  s:function('s:camelcase'),
       \ 'mixedcase':  s:function('s:mixedcase'),
+      \ 'adacase':    s:function('s:adacase'),
       \ 'snakecase':  s:function('s:snakecase'),
       \ 'uppercase':  s:function('s:uppercase'),
       \ 'dashcase':   s:function('s:dashcase'),
@@ -159,6 +166,7 @@ function! s:create_dictionary(lhs,rhs,opts)
   for [lhs,rhs] in items(expanded)
     if get(a:opts,'case',1)
       let dictionary[s:mixedcase(lhs)] = s:mixedcase(rhs)
+      let dictionary[s:adacase(lhs)] = s:adacase(rhs)
       let dictionary[tolower(lhs)] = tolower(rhs)
       let dictionary[toupper(lhs)] = toupper(rhs)
     endif
@@ -561,6 +569,8 @@ call extend(Abolish.Coercions, {
       \ 'c': Abolish.camelcase,
       \ 'm': Abolish.mixedcase,
       \ 'p': Abolish.mixedcase,
+      \ 'a': Abolish.adacase,
+      \ 'A': Abolish.adacase,
       \ 's': Abolish.snakecase,
       \ '_': Abolish.snakecase,
       \ 'u': Abolish.uppercase,
