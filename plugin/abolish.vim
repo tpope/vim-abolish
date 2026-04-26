@@ -214,11 +214,11 @@ function! s:Complete(A,L,P)
   if a:A =~# '^[^/?-]' && type(a:A) != type(0)
     return join(s:words(),"\n")
   elseif a:L =~# '^\w\+\s\+\%(-\w*\)\=$'
-    return "-search\n-substitute\n-delete\n-buffer\n-cmdline\n"
+    return "-search\n-substitute\n-delete\n-buffer\n-cmdline\n-expr=\n"
   elseif a:L =~# ' -\%(search\|substitute\)\>'
     return "-flags="
   else
-    return "-buffer\n-cmdline"
+    return "-buffer\n-cmdline\n-expr="
   endif
 endfunction
 
@@ -494,14 +494,27 @@ function! s:badgood(args)
   return [bad, join(words," ")]
 endfunction
 
-function! s:abbreviate_from_dict(cmd,dict)
+function! AbolishExpand(typo,correction,fn)
+  if !empty(a:fn) && exists('*'.a:fn)
+    return call(a:fn, [a:typo, a:correction])
+  endif
+  return a:correction
+endfunction
+
+function! s:abbreviate_from_dict(cmd,dict,...)
+  let fn = a:0 ? a:1 : ''
   for [lhs,rhs] in items(a:dict)
-    exe a:cmd lhs rhs
+    if empty(fn)
+      exe a:cmd lhs rhs
+    else
+      exe a:cmd '<expr>' lhs printf('AbolishExpand(%s,%s,%s)',
+            \ string(lhs), string(rhs), string(fn))
+    endif
   endfor
 endfunction
 
 let s:commands.abbrev     = s:commands.abstract.clone()
-let s:commands.abbrev.options = {"buffer":0,"cmdline":0,"delete":0}
+let s:commands.abbrev.options = {"buffer":0,"cmdline":0,"delete":0,"expr":""}
 function! s:commands.abbrev.process(bang,line1,line2,count,args)
   let args = copy(a:args)
   call s:extractopts(a:args,self.options)
@@ -528,7 +541,12 @@ function! s:commands.abbrev.process(bang,line1,line2,count,args)
     call s:throw("E471: Argument required".a:args[0])
   endif
   let dict = s:create_dictionary(bad,good,self.options)
-  call s:abbreviate_from_dict(cmd,dict)
+  if self.options.delete
+    call s:abbreviate_from_dict(cmd,dict)
+  else
+    let fn = !empty(self.options.expr) ? self.options.expr : get(g:, 'abolish_default_expr', '')
+    call s:abbreviate_from_dict(cmd,dict,fn)
+  endif
   if a:bang
     let i = 0
     let str = "Abolish ".join(args," ")
