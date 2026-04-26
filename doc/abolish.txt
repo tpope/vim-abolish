@@ -66,6 +66,16 @@ Accepts the following options:
 
  -buffer: buffer local
  -cmdline: work in command line in addition to insert mode
+ -expr={fn}: register as <expr> abbreviation; the inserted text is the
+            return value of {fn}({typo}, {correction}).  This allows
+            callers to skip expansion based on context (return {typo}
+            unchanged) or to perform alternate transformations.
+
+If -expr= is omitted, the global g:abolish_default_expr is used as the
+function name when set.  A per-line -expr= takes precedence over the
+global default.  When neither is set, abbreviations are registered as
+plain abbreviations and expand unconditionally; this is the default
+behaviour.
 
 A good place to define abbreviations is "after/plugin/abolish.vim",
 relative to ~\vimfiles on Windows and ~/.vim everywhere else.
